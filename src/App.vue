@@ -27,8 +27,8 @@ setTimeout(() => {
   otherProduct.name = "New Shoes";
 }, 1000);
 
-const updateImage = (index) => {
-  image.value = variants.value[index].image;
+const updateImage = (variantImage) => {
+  image.value = variantImage;
 };
 </script>
 
@@ -48,9 +48,9 @@ const updateImage = (index) => {
           <li v-for="detail in details" :key="detail">{{ detail }}</li>
         </ul>
         <div
-          v-for="(variant, index) in variants"
+          v-for="variant in variants"
           :key="variant.id"
-          @mouseover="updateImage(index)"
+          @mouseover="updateImage(variant.image)"
         >
           {{ variant.color }}
         </div>
