@@ -16,6 +16,8 @@ const otherProduct = reactive({
   name: "Shoes",
 });
 
+const cart = ref(0);
+
 setTimeout(() => {
   product.value = "New Socks";
   otherProduct.name = "New Shoes";
@@ -24,6 +26,7 @@ setTimeout(() => {
 
 <template>
   <div class="nav-bar"></div>
+  <div class="cart">🛒 ({{ cart }})</div>
   <div class="product-display">
     <div class="product-container">
       <div class="product-image">
@@ -39,6 +42,7 @@ setTimeout(() => {
         <div v-for="variant in variants" :key="variant.id">
           {{ variant.color }}
         </div>
+        <button class="button">Add to Cart</button>
       </div>
     </div>
   </div>
