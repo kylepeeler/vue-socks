@@ -42,7 +42,8 @@ setTimeout(() => {
         <div v-for="variant in variants" :key="variant.id">
           {{ variant.color }}
         </div>
-        <button class="button">Add to Cart</button>
+        <!-- Can optionally be written as a function <... v-on:click="(event) => { cart + 1 }" />          -->
+        <button class="button" v-on:click="cart += 1">Add to Cart</button>
       </div>
     </div>
   </div>
