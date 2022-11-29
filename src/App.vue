@@ -18,10 +18,18 @@ const otherProduct = reactive({
 
 const cart = ref(0);
 
+const addToCart = () => {
+  cart.value += 1;
+};
+
 setTimeout(() => {
   product.value = "New Socks";
   otherProduct.name = "New Shoes";
 }, 1000);
+
+const updateImage = (index) => {
+  image.value = variants.value[index].image;
+};
 </script>
 
 <template>
@@ -39,11 +47,14 @@ setTimeout(() => {
         <ul>
           <li v-for="detail in details" :key="detail">{{ detail }}</li>
         </ul>
-        <div v-for="variant in variants" :key="variant.id">
+        <div
+          v-for="(variant, index) in variants"
+          :key="variant.id"
+          @mouseover="updateImage(index)"
+        >
           {{ variant.color }}
         </div>
-        <!-- Can optionally be written as a function <... v-on:click="(event) => { cart + 1 }" />          -->
-        <button class="button" v-on:click="cart += 1">Add to Cart</button>
+        <button class="button" v-on:click="addToCart">Add to Cart</button>
       </div>
     </div>
   </div>
